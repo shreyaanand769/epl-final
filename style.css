@@ -1,0 +1,127 @@
+/* Importing Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins&display=swap');
+
+/* Body styling */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #021B79, #0575E6);
+  min-height: 150vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Page heading */
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  text-align: center;
+   margin: 40px 0 60px; /* Top: 30px, Sides: 0, Bottom: 50px */
+  font-size: 2.5rem;
+  text-shadow: 0 0 15px #fff, 0 0 25px #00f0ff;
+}
+
+/* Container for club cards */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  column-gap: 30px;
+  row-gap: 34px;
+  width: 95%;
+  max-width: 1300px;
+  margin-bottom: 50px;
+  justify-items: center;
+}
+
+/* Each club card */
+.club {
+  position: relative;
+  width: 100%;
+  padding: 25px 25px; /* Shorter height */
+  min-height: 150px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.1));
+  box-shadow: 0 0 20px rgba(255,255,255,0.15);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  color: white;
+  outline: 2px solid transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Club name */
+.club h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+}
+
+/* Hidden club details */
+.details {
+  display: none;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  text-shadow: none;
+  transition: all 0.3s ease;
+}
+
+/* Show details when active */
+.club.active .details {
+  display: block;
+}
+
+/* Glow and shine on hover or active */
+.club:hover,
+.club.active {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px currentColor, 0 0 65px currentColor inset;
+  outline: 2px solid currentColor;
+  outline-offset: -4px;
+}
+
+.club:hover h2,
+.club.active h2 {
+  text-shadow: 0 0 15px #ffffff, 0 0 30px currentColor;
+}
+
+.club:hover .details,
+.club.active .details {
+  text-shadow: 0 0 10px #ffffff, 0 0 20px currentColor;
+}
+
+/* Fade-in animation for details */
+@keyframes fadeIn {
+  0% {opacity: 0; transform: translateY(10px);}
+  100% {opacity: 1; transform: translateY(0);}
+}
+
+/* Shine animation across the card */
+@keyframes shine {
+  0% {background-position: -100%;}
+  100% {background-position: 200%;}
+}
+
+/* Light beam effect on hover */
+.club::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: skewX(-20deg);
+  transition: all 0.3s ease;
+}
+
+.club:hover::before {
+  left: 150%;
+  transition: left 0.75s ease;
+}
